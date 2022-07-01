@@ -29,7 +29,9 @@ const PeopleList = () => {
   }, [token]);
   useEffect(() => {
     setPeopleList(
-      users.filter((listUser) => listUser.username !== user.username)
+      users
+        .filter((listUser) => listUser.username !== user.username)
+        .slice(0, 3)
     );
   }, [users, user]);
 
