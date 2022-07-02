@@ -1,16 +1,43 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getPost,
+  addBookmark,
+  deleteBookmark,
+} from "../redux-reducers/postsSlice";
 const PostFeedCard = ({ post }) => {
   const {
     auth: { token, user },
   } = useAuth();
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
+  const { bookmarks } = useSelector(getPost);
 
   const { _id, content, firstName, username, profileImg } = post;
 
   const goToUserProfile = (username) => {
     navigate(`/profile/${username}`);
+  };
+  const isBookmarked = () => {
+    return bookmarks.find((postId) => postId === _id) ? true : false;
+  };
+
+  const bookmarkHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = isBookmarked()
+        ? await dispatch(deleteBookmark({ token, postId: _id }))
+        : await dispatch(addBookmark({ token, postId: _id }));
+      if (response.error) {
+        throw new Error(response.payload);
+      }
+      console.log("Bookmarked your post!");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -18,7 +45,7 @@ const PostFeedCard = ({ post }) => {
       <Link to={`/post/${_id}`}>
         <div className="flex w-10/12	p-16 border rounded-lg shadow-xl m-auto mt-5">
           <img
-            class="w-14 h-14 rounded-full"
+            className="w-14 h-14 rounded-full"
             src={profileImg}
             alt="Rounded avatar"
           />
@@ -39,13 +66,20 @@ const PostFeedCard = ({ post }) => {
             <p className="mt-1 text-xl">{content}</p>
             <div className="flex mt-5">
               <button className="text-2xl font-semibold">
-                <i class="fa-regular fa-heart text-violet-700"></i>
+                <i className="fa-regular fa-heart text-violet-700"></i>
               </button>
               <button className="ml-16 text-2xl font-semibold">
-                <i class="fa-regular fa-comment text-violet-700"></i>
+                <i className="fa-regular fa-comment text-violet-700"></i>
               </button>
-              <button className="ml-16 text-2xl font-semibold ">
-                <i class="fa-regular fa-bookmark text-violet-700"></i>
+              <button
+                onClick={bookmarkHandler}
+                className="ml-16 text-2xl font-semibold "
+              >
+                {isBookmarked() ? (
+                  <i className="fa-solid fa-bookmark text-violet-700"></i>
+                ) : (
+                  <i className="fa-regular fa-bookmark text-violet-700"></i>
+                )}
               </button>
             </div>
           </div>
