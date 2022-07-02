@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Home from "../pages/Home";
 import { PrivateRoutes } from "./PrivateRoutes";
+import SinglePost from "../pages/SinglePost";
 
 const AllRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const AllRoutes = () => {
           <Route path="/explore" element={<Explore />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/post/:postId" element={<SinglePost />} />
           <Route path="/bookmark" element={<Bookmark />} />
         </Route>
       </Routes>
