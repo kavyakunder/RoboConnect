@@ -9,7 +9,7 @@ import {
 } from "../redux-reducers/postsSlice";
 const PostFeedCard = ({ post }) => {
   const {
-    auth: { token, user },
+    auth: { token },
   } = useAuth();
   const dispatch = useDispatch();
 
