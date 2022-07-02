@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers } from "../redux-reducers/allUsersSlice";
 import { getAllUsers } from "../redux-reducers/allUsersSlice";
 import { useAuth } from "../context/auth-context";
+import { Link } from "react-router-dom";
 const PeopleList = () => {
   const { users } = useSelector(getAllUsers);
 
@@ -12,7 +13,6 @@ const PeopleList = () => {
     auth: { token, user },
   } = useAuth();
 
-  console.log("user in pl", users);
   const [peopleList, setPeopleList] = useState([]);
 
   useEffect(() => {
@@ -46,10 +46,12 @@ const PeopleList = () => {
                 src={user.profileImg}
                 alt="Rounded avatar"
               />
-              <div className="pl-2">
-                <h1 className="text-xl">{user.firstName}</h1>
-                <span>@{user.username}</span>
-              </div>
+              <Link to={`/profile/${user.username}`}>
+                <div className="pl-2 hover:text-violet-700 ">
+                  <h1 className="text-xl ">{user.firstName}</h1>
+                  <span>@{user.username}</span>
+                </div>
+              </Link>
             </div>
             <button className=" w-48	bg-violet-300 p-2 mt-2 rounded-md mx-4	">
               Follow
