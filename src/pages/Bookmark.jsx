@@ -1,7 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import PeopleList from "../components/PeopleList";
-import FeedPosts from "../components/FeedPosts";
 import PostFeedCard from "../components/PostFeedCard";
 import { useEffect } from "react";
 import { fetchBookmarks } from "../redux-reducers/postsSlice";
