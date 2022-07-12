@@ -54,6 +54,12 @@ const fetchBookmarksService = (token) => {
   });
 };
 
+const fetchLikedService = (token) => {
+  return axios.get(`/api/users/liked/`, {
+    headers: { authorization: token },
+  });
+};
+
 const addBookmarkService = (token, postId) => {
   return axios.post(
     `/api/users/bookmark/${postId}`,
@@ -118,6 +124,7 @@ export {
   likePostService,
   dislikePostService,
   fetchBookmarksService,
+  fetchLikedService,
   addBookmarkService,
   deleteBookmarkService,
   commentOnPostService,
