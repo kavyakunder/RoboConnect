@@ -6,23 +6,40 @@ import {
   getPost,
   addBookmark,
   deleteBookmark,
+  likePost,
+  dislikePost,
 } from "../redux-reducers/postsSlice";
 const PostFeedCard = ({ post }) => {
   const {
-    auth: { token },
+    auth: { token, user },
   } = useAuth();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const { bookmarks } = useSelector(getPost);
+  const { bookmarks, liked } = useSelector(getPost);
 
-  const { _id, content, firstName, username, profileImg } = post;
+  const {
+    _id,
+    content,
+    firstName,
+    username,
+    profileImg,
+    likes: { likeCount, likedBy },
+  } = post;
 
   const goToUserProfile = (username) => {
     navigate(`/profile/${username}`);
   };
   const isBookmarked = () => {
     return bookmarks.find((postId) => postId === _id) ? true : false;
+  };
+
+  const isLiked = () => {
+    return likedBy.find(
+      (postUsername) => postUsername.username === user.username
+    )
+      ? true
+      : false;
   };
 
   const bookmarkHandler = async (e) => {
@@ -35,6 +52,21 @@ const PostFeedCard = ({ post }) => {
         throw new Error(response.payload);
       }
       console.log("Bookmarked your post!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const likeHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = isLiked()
+        ? await dispatch(dislikePost({ token, postId: _id }))
+        : await dispatch(likePost({ token, postId: _id }));
+      if (response.error) {
+        throw new Error(response.payload);
+      }
+      console.log("Liked your post!");
     } catch (error) {
       console.log(error);
     }
@@ -65,8 +97,13 @@ const PostFeedCard = ({ post }) => {
             </div>
             <p className="mt-1 text-xl">{content}</p>
             <div className="flex mt-5">
-              <button className="text-2xl font-semibold">
-                <i className="fa-regular fa-heart text-violet-700"></i>
+              <button onClick={likeHandler} className="text-2xl font-semibold">
+                {isLiked() ? (
+                  <i className="fa-solid fa-heart text-violet-700"></i>
+                ) : (
+                  <i className="fa-regular fa-heart text-violet-700"></i>
+                )}
+                <span className="text-2xl ml-1 font-thin">{likeCount}</span>
               </button>
               <button className="ml-16 text-2xl font-semibold">
                 <i className="fa-regular fa-comment text-violet-700"></i>

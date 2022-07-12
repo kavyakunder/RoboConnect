@@ -12,6 +12,7 @@ import {
   commentOnPostService,
   deleteCommentService,
   editCommentService,
+  fetchLikedService,
 } from "../services/postService";
 
 export const fetchPosts = createAsyncThunk(
@@ -105,6 +106,19 @@ export const fetchBookmarks = createAsyncThunk(
   }
 );
 
+export const fetchLiked = createAsyncThunk(
+  "posts/fetchLiked",
+  async (token, { rejectWithValue }) => {
+    try {
+      const { data } = await fetchLikedService(token);
+      const { liked } = data;
+      return liked;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addBookmark = createAsyncThunk(
   "posts/addBookmark",
   async ({ token, postId }, { rejectWithValue }) => {
@@ -180,6 +194,7 @@ const postsSlice = createSlice({
   initialState: {
     posts: [],
     bookmarks: [],
+    liked: [],
     sortBy: "LATEST",
     postsLoading: false,
   },
@@ -221,6 +236,9 @@ const postsSlice = createSlice({
     },
     [fetchBookmarks.fulfilled]: (state, action) => {
       state.bookmarks = action.payload;
+    },
+    [fetchLiked.fulfilled]: (state, action) => {
+      state.liked = action.payload;
     },
     [addBookmark.fulfilled]: (state, action) => {
       state.bookmarks = action.payload;
