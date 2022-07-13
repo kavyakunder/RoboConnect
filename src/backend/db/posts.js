@@ -10,23 +10,6 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "The future is now. At the Unitree Robotics factory, there's a large scale test of Go1 robot dogs going on!! #robotics #futurism",
-    firstName: "Adarsh",
-    lastName: "Balika",
-    username: "notsoadrash",
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
-    likes: {
-      likeCount: 1,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    profileImg:
-      "https://images.unsplash.com/photo-1514960919797-5ff58c52e5ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z2lybCUyMGZhY2V8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    _id: uuid(),
-    content:
       "People are fascinated by robots because they're machines that can mimic life.It's going to be interesting to see how society deals with artificial intelligence, but it will definitely be cool.",
 
     username: "harrypeterson",
@@ -54,6 +37,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    postImg:
+      "https://webexahead.webex.com/wp-content/uploads/2020/08/61b92284-the-pandemic-is-bringing-us-closer-to-our-robot-takeout-future.jpg",
+
     profileImg:
       "https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGdpcmwlMjBmYWNlfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   },
@@ -90,11 +76,11 @@ export const posts = [
     profileImg:
       "https://images.unsplash.com/photo-1596935884413-260a972dab44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60",
   },
+
   {
     _id: uuid(),
     content:
-      "Did you know that he the first robot to get the citizenship of Saudi Arabia, but she also has more rights than any other woman in Saudi Arabia. Sophia has no male guardian and wears no abaya – two restrictions that are imposed on Saudi women.",
-
+      "Did you know that Sophia is the first robot to get the citizenship of Saudi Arabia, but she also has more rights than any other woman in Saudi Arabia. Sophia has no male guardian and wears no abaya – two restrictions that are imposed on Saudi women.",
     username: "laurenbond",
     firstName: "Lauren",
     lastName: "Bond",
@@ -103,14 +89,32 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    postImg:
+      "https://th-thumbnailer.cdn-si-edu.com/elXu6y_rw1jLdbNbpEXmBX9ZA44=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/a9/da/a9dabc78-549e-4c46-8996-2539578768c3/1280px-sophia_robot.jpg",
     profileImg:
       "https://images.unsplash.com/photo-1628875986390-15280f9865e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z2lybCUyMGZhY2V8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     _id: uuid(),
     content:
+      "The future is now. At the Unitree Robotics factory, there's a large scale test of Go1 robot dogs going on!! #robotics #futurism",
+    firstName: "Adarsh",
+    lastName: "Balika",
+    username: "notsoadrash",
+    email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    profileImg:
+      "https://images.unsplash.com/photo-1650658804900-10d2eee66295?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGdpcmwlMjBmYWNlfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    _id: uuid(),
+    content:
       "The OpenAI scientists have trained an AI system to solve the Rubik's Cube with a human-like robot hand.This is an unprecedented level of dexterity for a robot, and is hard even for humans to do.The system trains in an imperfect simulation and quickly adapts to reality",
-
     username: "peterhill",
     firstName: "Peter",
     lastName: "Hill",
@@ -119,6 +123,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    postImg:
+      "https://i.chzbgr.com/full/9375422976/h9CECC38E/gif-of-robot-hand-solving-rubiks-cube",
+
     profileImg:
       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },

@@ -19,6 +19,8 @@ const Login = () => {
   const testLogin = {
     username: "notsoadarsh",
     password: "adarshbalika",
+    profileImg:
+      "https://images.unsplash.com/photo-1644982647708-0b2cc3d910b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
   };
 
   const loginSubmitHandler = async (user) => {

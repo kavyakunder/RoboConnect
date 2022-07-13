@@ -24,6 +24,7 @@ const PostFeedCard = ({ post }) => {
     firstName,
     username,
     profileImg,
+    postImg,
     likes: { likeCount, likedBy },
   } = post;
 
@@ -96,6 +97,8 @@ const PostFeedCard = ({ post }) => {
               <span className="ml-auto text-lg">Just now</span>
             </div>
             <p className="mt-1 text-xl">{content}</p>
+            <img className="m-auto pt-3" src={postImg} alt="" width={"800px"} />
+
             <div className="flex mt-5">
               <button onClick={likeHandler} className="text-2xl font-semibold">
                 {isLiked() ? (
