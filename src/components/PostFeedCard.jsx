@@ -25,9 +25,11 @@ const PostFeedCard = ({ post }) => {
     username,
     profileImg,
     postImg,
+    comments,
     likes: { likeCount, likedBy },
   } = post;
 
+  console.log("comments", comments);
   const goToUserProfile = (username) => {
     navigate(`/profile/${username}`);
   };
@@ -98,7 +100,6 @@ const PostFeedCard = ({ post }) => {
             </div>
             <p className="mt-1 text-xl">{content}</p>
             <img className="m-auto pt-3" src={postImg} alt="" width={"800px"} />
-
             <div className="flex mt-5">
               <button onClick={likeHandler} className="text-2xl font-semibold">
                 {isLiked() ? (
@@ -110,6 +111,10 @@ const PostFeedCard = ({ post }) => {
               </button>
               <button className="ml-16 text-2xl font-semibold">
                 <i className="fa-regular fa-comment text-violet-700"></i>
+                <span className="text-2xl ml-1 font-thin">
+                  {" "}
+                  {comments.length > 0 ? comments.length : 0}
+                </span>
               </button>
               <button
                 onClick={bookmarkHandler}
