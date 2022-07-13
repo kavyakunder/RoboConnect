@@ -25,7 +25,7 @@ const Navbar = () => {
 
       <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-sm lg:flex-grow"></div>
-        <div>
+        <div className="text-white text-xl">
           {auth.isAuth === true ? (
             <>
               <Link to="/" onClick={() => signoutAuth(setAuth)}>
