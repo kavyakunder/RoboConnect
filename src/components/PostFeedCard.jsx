@@ -16,7 +16,7 @@ const PostFeedCard = ({ post }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const { bookmarks, liked } = useSelector(getPost);
+  const { bookmarks } = useSelector(getPost);
 
   const {
     _id,

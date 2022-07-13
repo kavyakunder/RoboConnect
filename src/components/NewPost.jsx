@@ -66,8 +66,8 @@ const NewPost = () => {
               <img
                 width={"350px"}
                 src={selectedImage}
-                alt="image"
                 className="mt-3"
+                alt={selectedImage}
               />
             </>
           )}
