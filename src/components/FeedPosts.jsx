@@ -6,7 +6,7 @@ import { getPost, fetchPosts } from "../redux-reducers/postsSlice";
 import { useAuth } from "../context/auth-context";
 const FeedPosts = () => {
   const {
-    auth: { token, user },
+    auth: { user },
   } = useAuth();
 
   const dispatch = useDispatch();
@@ -27,9 +27,7 @@ const FeedPosts = () => {
   return (
     <div>
       {posts.map((post) => {
-        {
-          return <PostFeedCard key={post._id} post={post} />;
-        }
+        return <PostFeedCard key={post._id} post={post} />;
       })}
     </div>
   );

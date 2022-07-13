@@ -4,7 +4,7 @@ import { getUserProfile } from "../redux-reducers/userProfileSlice";
 
 const ProfileDetails = () => {
   const { userProfile } = useSelector(getUserProfile);
-  const { _id, firstName, lastName, bio, profileImg } = userProfile;
+  const { firstName, lastName, bio, profileImg } = userProfile;
   return (
     <div>
       <div className="relative max-w-md mx-auto md:max-w-2xl  min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-28">
@@ -13,6 +13,7 @@ const ProfileDetails = () => {
             <div className="w-full flex justify-center">
               <div className="relative">
                 <img
+                  alt={profileImg}
                   src={profileImg}
                   className="shadow-xl rounded-full align-middle border-none  -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
                 />
