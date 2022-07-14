@@ -19,8 +19,9 @@ const Navbar = () => {
 
   return (
     <nav class="w-full fixed	flex  justify-between flex-wrap bg-purple-700 p-6">
-      <span class="text-white mr-6 font-semibold text-4xl tracking-tight">
-        RoboConnect
+      <span class="flex text-white mr-6 font-semibold text-4xl tracking-tight">
+        <img className="w-11 mr-2" src="images/robooqq.png" />
+        <span>RoboConnect</span>
       </span>
 
       <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
