@@ -78,7 +78,7 @@ const PostFeedCard = ({ post }) => {
   return (
     <>
       <Link to={`/post/${_id}`}>
-        <div className="flex w-10/12	p-16 border rounded-lg shadow-xl m-auto mt-5">
+        <div className="flex w-10/12	px-16 py-12  border rounded-lg shadow-xl m-auto mt-8">
           <img
             className="w-14 h-14 rounded-full"
             src={profileImg}
