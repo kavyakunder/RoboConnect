@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { getPost } from "../redux-reducers/postsSlice";
 import { fetchSinglePostService } from "../services/postService";
 import PostFeedCard from "../components/PostFeedCard";
+import CommentForm from "../components/CommentForm";
 
 const SinglePost = () => {
   const [viewPost, setViewPost] = useState("");
@@ -36,7 +37,12 @@ const SinglePost = () => {
               View posts
               <hr />
             </h1>
-            {viewPost && <PostFeedCard post={viewPost} />}
+            {viewPost && (
+              <>
+                <PostFeedCard post={viewPost} />
+                <CommentForm post={viewPost} />
+              </>
+            )}
           </div>
         </div>
         <div className="flex flex-col flex-shrink-0 w-1/4 py-4 pl-4 ">
