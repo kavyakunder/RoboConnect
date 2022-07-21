@@ -8,7 +8,6 @@ const AuthProvider = ({ children }) => {
     token: localStorage.getItem("AUTH_TOKEN"),
     user: JSON.parse(localStorage.getItem("user")),
   });
-  console.log("auth user", auth.user);
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}

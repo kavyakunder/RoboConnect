@@ -18,19 +18,17 @@ const updateUserProfileService = (token, userData) => {
   );
 };
 
-const followUserService = (token, userId) => {
+const followUserService = ({ token, followUserId }) => {
   return axios.post(
-    `/api/users/follow/${userId}`,
+    `/api/users/follow/${followUserId}`,
     {},
-    {
-      headers: { authorization: token },
-    }
+    { headers: { authorization: token } }
   );
 };
 
-const unfollowUserService = (token, userId) => {
+const unfollowUserService = ({ token, followUserId }) => {
   return axios.post(
-    `/api/users/unfollow/${userId}`,
+    `/api/users/unfollow/${followUserId}`,
     {},
     {
       headers: { authorization: token },
