@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import { PrivateRoutes } from "./PrivateRoutes";
 import SinglePost from "../pages/SinglePost";
 import Liked from "../pages/Liked";
+import NotFound from "../pages/NotFound";
 
 const AllRoutes = () => {
   return (
@@ -20,7 +21,7 @@ const AllRoutes = () => {
           <Route path="/profile/:username" element={<Profile />} />
           <Route path="/post/:postId" element={<SinglePost />} />
           <Route path="/bookmark" element={<Bookmark />} />
-          <Route path="/liked" element={<Liked />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

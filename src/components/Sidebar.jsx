@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/auth-context";
 
 const Sidebar = () => {
+  const {
+    auth: { user },
+  } = useAuth();
   return (
     <div class="w-84 mt-10 mr-14   ">
       <ul class="relative ">
@@ -37,12 +41,12 @@ const Sidebar = () => {
         </li>
         <li class="relative">
           <Link
-            to="/liked"
+            to={`/profile/${user.username}`}
             class="flex items-center text-lg p-12  h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 "
             data-mdb-ripple="true"
             data-mdb-ripple-color="dark"
           >
-            Liked
+            Profile
           </Link>
         </li>
       </ul>

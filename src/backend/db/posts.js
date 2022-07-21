@@ -19,6 +19,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+
     profileImg:
       "https://images.unsplash.com/photo-1596935884413-260a972dab44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHBlcnNvbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60",
     comments: [

@@ -4,40 +4,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers } from "../redux-reducers/allUsersSlice";
 import { getAllUsers } from "../redux-reducers/allUsersSlice";
 import { useAuth } from "../context/auth-context";
+import { followUser } from "../redux-reducers/allUsersSlice";
 import { Link } from "react-router-dom";
 const PeopleList = () => {
   const { users } = useSelector(getAllUsers);
-
+  console.log("users", users);
   const dispatch = useDispatch();
   const {
     auth: { token, user },
   } = useAuth();
-
-  const [peopleList, setPeopleList] = useState([]);
+  const [suggestionsList, setSuggestionsList] = useState([]);
+  console.log("ser follow", user.following.length);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await dispatch(fetchAllUsers());
         if (response.error) {
-          throw new Error("Error in loading users");
+          throw new Error("Error in loading all users.");
         }
       } catch (error) {
         console.log(error);
       }
     })();
   }, [token]);
+  const userData = users?.find((dbUser) => dbUser.username === user.username);
+
   useEffect(() => {
-    setPeopleList(
+    setSuggestionsList(
       users
-        .filter((listUser) => listUser.username !== user.username)
-        .slice(0, 3)
+        ?.filter((listUser) => listUser.username !== userData?.username)
+        ?.filter(
+          (eachUser) =>
+            !userData?.following.find(
+              (item) => item.username === eachUser.username
+            )
+        )
     );
   }, [users, user]);
 
   return (
     <div>
-      {peopleList.map((user) => {
+      {suggestionsList.map((user) => {
         return (
           <div className="flex flex-col p-5 mx-2 ">
             <div className="flex mx-2 ">
@@ -53,7 +61,14 @@ const PeopleList = () => {
                 </div>
               </Link>
             </div>
-            <button className=" w-48	bg-violet-300 p-2 mt-2 rounded-md mx-4	">
+            <button
+              onClick={(e) => {
+                console.log("I have clicked");
+                e.stopPropagation();
+                dispatch(followUser({ token, followUserId: user._id }));
+              }}
+              className=" w-48	bg-violet-300 p-2 mt-2 rounded-md mx-4	"
+            >
               Follow
             </button>
             <hr className="mt-2" />
