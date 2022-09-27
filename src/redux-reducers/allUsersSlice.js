@@ -31,12 +31,24 @@ export const followUser = createAsyncThunk(
   }
 );
 
+// export const unfollowUser = createAsyncThunk(
+//   "allUsers/unfollowUser",
+//   async ({ token, userId, dispatch }, { rejectWithValue }) => {
+//     try {
+//       const { data } = await unfollowUserService(token, userId);
+//       dispatch(updateUserProfile({ token: token, userData: data.user }));
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const unfollowUser = createAsyncThunk(
   "allUsers/unfollowUser",
-  async ({ token, userId, dispatch }, { rejectWithValue }) => {
+  async ({ token, followUserId }, { rejectWithValue }) => {
     try {
-      const { data } = await unfollowUserService(token, userId);
-      dispatch(updateUserProfile({ token: token, userData: data.user }));
+      const { data } = await unfollowUserService({ token, followUserId });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

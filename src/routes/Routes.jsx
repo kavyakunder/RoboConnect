@@ -7,7 +7,7 @@ import Profile from "../pages/Profile";
 import Home from "../pages/Home";
 import { PrivateRoutes } from "./PrivateRoutes";
 import SinglePost from "../pages/SinglePost";
-import Liked from "../pages/Liked";
+// import Liked from "../pages/Liked";
 import NotFound from "../pages/NotFound";
 
 const AllRoutes = () => {

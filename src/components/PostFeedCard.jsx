@@ -29,7 +29,6 @@ const PostFeedCard = ({ post }) => {
     likes: { likeCount, likedBy },
   } = post;
 
-  console.log("comments", comments);
   const goToUserProfile = (username) => {
     navigate(`/profile/${username}`);
   };
@@ -96,7 +95,7 @@ const PostFeedCard = ({ post }) => {
                 <span className="font-semibold text-lg">{firstName}</span>
                 <span className="ml-1 text-lg">@{username}</span>
               </div>
-              <span className="ml-auto text-lg">Just now</span>
+              {/* <span className="ml-auto text-lg">Just now</span> */}
             </div>
             <p className="mt-1 text-xl">{content}</p>
             <img className="m-auto pt-3" src={postImg} alt="" width={"800px"} />

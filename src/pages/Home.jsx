@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { fetchPosts } from "../redux-reducers/postsSlice";
 import PeopleList from "../components/PeopleList";
 import Sidebar from "../components/Sidebar";
-import FeedPosts from "../components/FeedPosts";
+// import FeedPosts from "../components/FeedPosts";
 import NewPost from "../components/NewPost";
 import { useAuth } from "../context/auth-context";
 import { useDispatch, useSelector } from "react-redux";

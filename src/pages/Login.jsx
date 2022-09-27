@@ -61,19 +61,7 @@ const Login = () => {
               backgroundImage:
                 "url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)",
             }}
-          >
-            <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
-              <div>
-                <h2 className="text-4xl font-bold text-white">Brand</h2>
-
-                <p className="max-w-xl mt-3 text-gray-300">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
-                  autem ipsa, nulla laboriosam dolores, repellendus perferendis
-                  libero suscipit nam temporibus molestiae
-                </p>
-              </div>
-            </div>
-          </div>
+          ></div>
 
           <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div className="flex-1">
@@ -142,12 +130,6 @@ const Login = () => {
 
                   <div className="mt-6">
                     <button
-                      type="submit"
-                      className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-violet-500 rounded-md hover:bg-violet-400 focus:outline-none focus:bg-violet-400 focus:ring focus:ring-violet-300 focus:ring-opacity-50"
-                    >
-                      Login
-                    </button>
-                    <button
                       onClick={(e) => {
                         e.preventDefault();
                         testLoginHandler(testLogin);
@@ -159,13 +141,13 @@ const Login = () => {
                   </div>
                 </form>
 
-                <p className="mt-6 text-sm text-center text-gray-400">
+                {/* <p className="mt-6 text-sm text-center text-gray-400">
                   Don&#x27;t have an account yet?{" "}
                   <span className="text-blue-500 focus:outline-none focus:underline hover:underline">
                     Sign up
                   </span>
                   .
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

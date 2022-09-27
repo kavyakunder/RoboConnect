@@ -1,11 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { fetchAllUsers } from "../redux-reducers/allUsersSlice";
+
 import { getUserProfile } from "../redux-reducers/userProfileSlice";
-import { followUser } from "../redux-reducers/allUsersSlice";
+import { followUser, unfollowUser } from "../redux-reducers/allUsersSlice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../context/auth-context";
 import { getPost } from "../redux-reducers/postsSlice";
+import { useEffect } from "react";
+//
+import { getAllUsers } from "../redux-reducers/allUsersSlice";
+import { useState } from "react";
+
+//
 const ProfileDetails = () => {
   const { userProfile } = useSelector(getUserProfile);
   const dispatch = useDispatch();
@@ -13,15 +21,56 @@ const ProfileDetails = () => {
   const {
     auth: { token, user },
   } = useAuth();
+
   const { posts } = useSelector(getPost);
-  const { firstName, lastName, bio, profileImg, following, followers } =
+  console.log("postss", posts);
+  const { firstName, lastName, bio, profileImg, following, followers, _id } =
     userProfile;
   const currentUserPosts = posts?.filter((post) => post.username === username);
+  const { userPosts } = useSelector(getUserProfile);
 
-  console.log("user profile img", user.profileImg);
+  //
+  const checkFollowed = () =>
+    followers?.some((listUser) => listUser.username === user.username);
+
+  console.log("checkFollowed", checkFollowed());
+  const userAlreadyFollowing = followers?.find(
+    (follower) => follower.username === user.username
+  );
+  const [isCurruser, setIsUser] = useState(false);
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await dispatch(fetchAllUsers());
+        if (response.error) {
+          throw new Error("Error in loading all users.");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [userAlreadyFollowing]);
+  // useEffect(() => {
+  //   dispatch(getPost());
+  // }, []);
+
+  const followUnfollowHandler = async () => {
+    try {
+      const response = checkFollowed()
+        ? await dispatch(unfollowUser({ token, userId: _id }))
+        : await dispatch(followUser({ token, userId: _id }));
+      if (response.error) {
+        throw new Error(response.error);
+      }
+    } catch (error) {
+      console.log("hey");
+      // showToast("error", "Can't follow user. Try again later.");
+    }
+  };
+  //
   return (
     <div>
-      <div className="relative max-w-md mx-auto md:max-w-2xl  min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-28">
+      <div className="relative max-w-md mx-auto md:max-w-2xl  min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-28 ">
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
             <div className="w-full flex justify-center">
@@ -37,7 +86,7 @@ const ProfileDetails = () => {
               <div className="flex justify-center lg:pt-4 pt-8 pb-0">
                 <div className="p-3 text-center">
                   <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                    {currentUserPosts.length}
+                    {userPosts.length}
                   </span>
                   <span className="text-sm text-slate-400">Posts</span>
                 </div>
@@ -68,15 +117,26 @@ const ProfileDetails = () => {
                 <p className="font-light leading-relaxed text-slate-600 mb-4">
                   {bio || user.bio}
                 </p>
-                <button
+                {checkFollowed() ? (
+                  <button onClick={followUnfollowHandler}>Following</button>
+                ) : (
+                  <button onClick={followUnfollowHandler}>Follow</button>
+                )}
+                {/* {user.following.some((us) => us._id === user?._id) ? (
+                  <button>hi</button>
+                ) : (
+                  <button>hello</button>
+                )} */}
+                {/* <button
                   onClick={(e) => {
                     e.stopPropagation();
+                    console.log("checked");
                     dispatch(followUser({ token, followUserId: user._id }));
                   }}
                   className="font-normal text-white hover:text-violet-900 bg-violet-400 p-3 border rounded-lg"
                 >
-                  Follow Account
-                </button>
+                  Follow
+                </button> */}
               </div>
             </div>
           </div>

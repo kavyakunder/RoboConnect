@@ -46,6 +46,8 @@ const ProfilePage = () => {
     })();
   }, [userPosts]);
 
+  console.log("user post", userPosts);
+
   return (
     <>
       <div className="flex justify-between w-screen h-screen px-4 text-gray-700">
@@ -53,7 +55,7 @@ const ProfilePage = () => {
         <div className="flex flex-col flex-grow border-l border-r border-gray-300">
           <div className="flex-grow h-0 overflow-auto mt-20">
             <h1 className="text-3xl text-center mt-8 ">
-              Explore trending postss
+              {/* Profile */}
               <hr />
             </h1>
             <ProfileDetails />
