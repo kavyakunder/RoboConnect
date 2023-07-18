@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { useAuth } from "../context/auth-context";
 import { addPost } from "../redux-reducers/postsSlice";
-
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 const NewPost = () => {
   const dispatch = useDispatch();
   const {
@@ -73,7 +73,7 @@ const NewPost = () => {
           )}
           <div className="flex justify-between mt-2">
             <label className="cursor-pointer">
-              <i class="fa-duotone fa-image text-2xl"></i>
+              <InsertPhotoIcon fontSize="large" />
               <input
                 id="add-image"
                 type="file"

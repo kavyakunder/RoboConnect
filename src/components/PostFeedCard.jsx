@@ -9,6 +9,12 @@ import {
   likePost,
   dislikePost,
 } from "../redux-reducers/postsSlice";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+
 const PostFeedCard = ({ post }) => {
   const {
     auth: { token, user },
@@ -102,14 +108,20 @@ const PostFeedCard = ({ post }) => {
             <div className="flex mt-5">
               <button onClick={likeHandler} className="text-2xl font-semibold">
                 {isLiked() ? (
-                  <i className="fa-solid fa-heart text-violet-700"></i>
+                  <FavoriteIcon sx={{ color: "#6d28d9" }} fontSize="large" />
                 ) : (
-                  <i className="fa-regular fa-heart text-violet-700"></i>
+                  <FavoriteBorderIcon
+                    sx={{ color: "#6d28d9" }}
+                    fontSize="large"
+                  />
                 )}
                 <span className="text-2xl ml-1 font-thin">{likeCount}</span>
               </button>
               <button className="ml-16 text-2xl font-semibold">
-                <i className="fa-regular fa-comment text-violet-700"></i>
+                <ChatBubbleOutlineIcon
+                  sx={{ color: "#6d28d9" }}
+                  fontSize="large"
+                />
                 <span className="text-2xl ml-1 font-thin">
                   {" "}
                   {comments.length > 0 ? comments.length : 0}
@@ -120,9 +132,12 @@ const PostFeedCard = ({ post }) => {
                 className="ml-16 text-2xl font-semibold "
               >
                 {isBookmarked() ? (
-                  <i className="fa-solid fa-bookmark text-violet-700"></i>
+                  <BookmarkIcon sx={{ color: "#6d28d9" }} fontSize="large" />
                 ) : (
-                  <i className="fa-regular fa-bookmark text-violet-700"></i>
+                  <BookmarkBorderIcon
+                    sx={{ color: "#6d28d9" }}
+                    fontSize="large"
+                  />
                 )}
               </button>
             </div>
